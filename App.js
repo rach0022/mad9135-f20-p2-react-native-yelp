@@ -1,21 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { NavigationContainer } from '@react-navigation/native'
+import { createDrawerNavigator } from '@react-navigation/drawer'
+import { API_KEY } from '@env'
+import { themes } from './styles'
+// import my needed screens to display the app
+import TabScreen from './screens/TabScreen'
+import SettingsStackNavigator from './screens/settings/SettingsStackNavigator'
+
+// create our drawer nav element, will be used to switch between
+// main app, settings, and saved venues*
+const AppDrawer = createDrawerNavigator()
 
 export default function App() {
+  // create our reference to the light theme 
+  const theme = themes.light
+  // console.log(API_KEY) // testing if API key will work 
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <AppDrawer.Navigator
+          initialRoute="Home"
+          drawerPosition="right"
+          drawerType="front"
+        >
+          <AppDrawer.Screen name="Home" component={TabScreen} />
+          <AppDrawer.Screen name="Settings" component={SettingsStackNavigator} />
+        </AppDrawer.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
