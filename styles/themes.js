@@ -10,7 +10,22 @@ export const light = {
     subduedTextColor: colours.gray500,
     inverseTextColor: colours.white,
     listSeparatorColor: colours.indigo100,
-    bodyBackgroundColor: colours.indigo50
+    bodyBackgroundColor: colours.indigo50,
+    // used for the stack navigator
+    stackOptions: {
+        headerStyle: { backgroundColor: colours.primaryColor },
+        headerTintColor: colours.backgroundColor
+    },
+    // used for the bottom tab bar navigation
+    tabBarOptions: {
+        activeTintColor: colours.activeColor,
+        inactiveTintColor: colours.inActiveColor,
+        style: {
+            backgroundColor: colours.backgroundColor
+        }
+    },
+    // used to determine safe area edges
+    safeAreaEdges: ['right', 'left', 'bottom']
 }
 
 export const dark = {}
