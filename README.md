@@ -35,3 +35,7 @@ and Brand Guidelines
 - [ ] Invite GitHub user rlmckenney as a collaborator on your private repo.
 - [ ] Install your app on one of the phones from the lab cabinet and demo it to your teacher.
 - [ ] Submit both the URL of the GitHub code repo and the Expo public link to the Brightspace assignment folder.
+
+## Helpful Docs:
+
+- https://reactnative.dev/docs/network (look at the function componenet, similar standard but a location.service.js and yelp.service.js will need to be defined in order to repeat the fetch in multiple files or pass down the results as a prop?)
