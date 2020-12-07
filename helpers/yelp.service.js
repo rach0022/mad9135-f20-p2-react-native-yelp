@@ -5,12 +5,12 @@ const DEFAULT_OPTIONS = {
         lon: -75.76,
         lat: 45.35, // Algonquin College
     },
-    radius: 1000, // 1 km
+    radius: 2500, // 2.5km
     limit: 20,
     term: '',
+    category: '',
 }
 // const cache = new Map()
-
 /**
  * @typedef {Object} APIOptions
  * @property {string} term an optional search term like coffee or restaurants
@@ -30,12 +30,12 @@ const DEFAULT_OPTIONS = {
  * @see https://www.yelp.com/developers/documentation/v3/get_started
  */
 export async function getVenues(options) {
-    const { coord, units, term, limit, radius } = Object.assign({}, DEFAULT_OPTIONS, options)
+    const { coord, units, term, limit, radius, category } = Object.assign({}, DEFAULT_OPTIONS, options)
     // const cacheItem = cache.get(coord)
     // if (cacheItem && !isExpired(cacheItem.current.dt)) {
     //     return cacheItem
     // }
-    const venues = await fetchVenues({ units, coord, term, limit, radius })
+    const venues = await fetchVenues({ units, coord, term, limit, radius, category })
     // console.log(venues)
     // cache.set(coord, venues)
     return venues
@@ -45,9 +45,9 @@ export async function getVenues(options) {
  * Private function to make the actual `fetch()` call to the API
  * @param {APIOptions} options
  */
-async function fetchVenues({ coord: { lat, lon }, term, limit, radius }) {
+async function fetchVenues({ coord: { lat, lon }, term, limit, radius, category }) {
     // create the url based on the lat lon and term (used for filtering)
-    const url = `${BASE_URL}?latitude=${lat}&longitude=${lon}&term=${term}&limit=${limit}&radius=${radius}`
+    const url = `${BASE_URL}?latitude=${lat}&longitude=${lon}&term=${term}&limit=${limit}&radius=${radius}&categories=${category}`
     // console.log(url)
     // create a headers object to append on our authorization token from the yelp fusion api
     let headerParams = new Headers()
