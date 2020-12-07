@@ -15,7 +15,7 @@ and Brand Guidelines
 ## Core Requirements
 
 - [ ] When initially opened, the application only displays a button for the user to click in order to download the list of restaurants nearby.
-- [ ] While the application is fetching that data, a spinner should be displayed indicating to the user that something is happening.
+- [x] While the application is fetching that data, a spinner should be displayed indicating to the user that something is happening.
 - [ ] The search that you will implement will need to use the native GPS in order to provide a list to the user based on his coordinates. Remember, you will need to ask the user's permission to use their current location.
 - [ ] The list of restaurants will show the names as well as the distance from the user's location displayed in kilometres (with 2 decimals).
 - [ ] The list should be ordered by increasing distance.
@@ -29,7 +29,7 @@ and Brand Guidelines
 - In addition to the mandatory requirements above, you may earn up to 10% in extra credit on your final grade for correctly implementing these bonus features.
 
 * [ ] In addition to the list view, allow the user to display the search results on a map. The map should be centred on the user's current position. 5%
-* [ ] Add a bottom tab navigator to filter the results. Tabs should include: Restaurants, Coffee, Bakeries, Food Trucks. 2%
+* [x] Add a bottom tab navigator to filter the results. Tabs should include: Restaurants, Coffee, Bakeries, Food Trucks. 2%
 * [ ] Add a search bar to the Restaurant result list to allow the user to filter the list by a particular type of restaurant. e.g. Mexican, Italian, Fish 3%
 
 ## Submission

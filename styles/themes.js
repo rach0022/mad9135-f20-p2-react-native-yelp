@@ -2,6 +2,7 @@
 import { StyleSheet } from 'react-native'
 import * as colours from './colours'
 import * as spacing from './spacing'
+import * as typography from './typography'
 
 // common patterns will be spread throughout dark and light themes
 const commonPatterns = {
@@ -23,8 +24,29 @@ const commonPatterns = {
     styles: StyleSheet.create({
         container: {
             padding: spacing.base,
-            backgroundColor: colours.indigo200
-        }
+            backgroundColor: colours.indigo200,
+        },
+        view: {
+            flex: 1,
+            padding: spacing.larger,
+            flexGrow: 0,
+            height: 200
+        },
+        card: {
+            paddingVertical: spacing.small,
+            borderBottomWidth: spacing.hairline,
+            borderBottomColor: colours.indigo200
+        },
+        title: { fontSize: typography.fs4, color: colours.darkText },
+        phone: {
+            paddingTop: spacing.smallest,
+            fontSize: typography.fs3,
+            color: colours.subduedTextColor
+        },
+        flex: {
+            flex: 1,
+            flexGrow: 0
+        },
     })
 }
 

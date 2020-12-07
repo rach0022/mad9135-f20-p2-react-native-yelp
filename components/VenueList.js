@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context'
+
 import { getVenues, getGeolocation } from '../helpers'
 import { themes } from '../styles'
+import VenueListItem from './VenueListItem';
 
 // based on react native docs: https://reactnative.dev/docs/network
-export default function VenueList() {
+export default function VenueList({ category }) {
     // first lets get our search term based on what the user searched
     // for now will be static but change later
     const [city, setCity] = useState('Kanata, ON. CA')
@@ -26,12 +29,14 @@ export default function VenueList() {
     // and get our coordinates based on our city. need city and setLocation as depandancies
     // as we want it to rerun when the location changes
     useEffect(() => {
-        getGeolocation.getGeolocation(city).then(setLocation)
+        getGeolocation.getGeolocation(city)
+            .then(setLocation)
+            .catch((error) => console.error(error))
     }, [city, setLocation])
 
     // using a use effect hook we can fetch the venues whenever the location changes (for now static)
     useEffect(() => {
-        getVenues.getVenues({ coord: location })
+        getVenues.getVenues({ coord: location, category: category })
             .then(setData)
             .catch((error) => console.error(error))
             .finally(() => setLoading(false))
@@ -39,28 +44,27 @@ export default function VenueList() {
 
     // console.log("DATA:", data, Object.keys(data), data.businesses)
     if (data.businesses) {
-        console.log(Object.keys(data.businesses[0]), data.businesses)
+        // console.log(Object.keys(data.businesses[0]), data.businesses)
     }
     // console.log(Object.keys(data?.businesses[0] || { key: 1 }))
     // using a ternary operator based on the state of is loading we either show the activity indicator 
     // or the flatlist with the data of the food venues
-
     return (
-        <View style={{ flex: 1, padding: 24 }}>
+        <SafeAreaView style={theme.flex} edges={theme.edges}>
             {isLoading
                 ? <ActivityIndicator />
                 : (
                     <FlatList
                         style={theme.styles.container}
-                        data={data.businesses}
+                        data={data?.businesses || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
-                            return <Text style={{ color: theme.strongTextColor }}>{item.name}, {item.phone}</Text>
+                            return <VenueListItem venue={item} theme={theme} />
                         }}
                     />
                 )
             }
-        </View>
+        </SafeAreaView>
     )
 }
