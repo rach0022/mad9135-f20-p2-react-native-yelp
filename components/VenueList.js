@@ -1,12 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
 import { getVenues, getGeolocation } from '../helpers'
+import { themes, spacing } from '../styles'
 
 // based on react native docs: https://reactnative.dev/docs/network
 export default function VenueList() {
     // first lets get our search term based on what the user searched
     // for now will be static but change later
     const [city, setCity] = useState('Kanata, ON. CA')
+
+    // get a reference to the current them, change later to update
+    const theme = themes.light
+    // crate hte styels for the container based on the theme 
+    const styles = StyleSheet.create({
+        container: {
+            padding: spacing.base,
+            backgroundColor: theme.backgroundColor
+        }
+    })
 
     // lets set up a useState function to hold our coordinates from the user
     const [location, setLocation] = useState({
@@ -25,7 +36,7 @@ export default function VenueList() {
         getGeolocation.getGeolocation(city).then(setLocation)
     }, [city, setLocation])
 
-
+    // using a use effect hook we can fetch the venues whenever the location changes (for now static)
     useEffect(() => {
         getVenues.getVenues({ coord: location })
             .then(setData)
@@ -33,21 +44,30 @@ export default function VenueList() {
             .finally(() => setLoading(false))
     }, [location, setData])
 
-    console.log(Object.keys(data?.businesses[0] || { key: 1 }))
+    // console.log("DATA:", data, Object.keys(data), data.businesses)
+    if (data.businesses) {
+        console.log(Object.keys(data.businesses[0]), data.businesses)
+    }
+    // console.log(Object.keys(data?.businesses[0] || { key: 1 }))
     // using a ternary operator based on the state of is loading we either show the activity indicator 
     // or the flatlist with the data of the food venues
+
     return (
         <View style={{ flex: 1, padding: 24 }}>
-            {isLoading ? <ActivityIndicator /> : (
-                <FlatList
-                    data={data?.businesses[0]}
-                    keyExtractor={({ id }, index) => id}
-                    renderItem={({ item }, index) => (
-                        // update to a differtnt component later like venue card
-                        <Text>{index}: {item.name}, {item.phone}</Text>
-                    )}
-                />
-            )}
+            {isLoading
+                ? <ActivityIndicator />
+                : (
+                    <FlatList
+                        style={styles.container}
+                        data={data.businesses}
+                        keyExtractor={({ id }) => `${id}`}
+                        renderItem={({ item }, index) => {
+                            // update to a differtnt component later like venue card
+                            return <Text>{item.name}, {item.phone}</Text>
+                        }}
+                    />
+                )
+            }
         </View>
     )
 }

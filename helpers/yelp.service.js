@@ -37,7 +37,7 @@ export async function getVenues(options) {
  */
 async function fetchVenues({ coord: { lat, lon }, term }) {
     // create the url based on the lat lon and term (used for filtering)
-    const url = `${BASE_URL}?latitude=${lat}&longitude=${lon}&term=${term}`
+    const url = `${BASE_URL}?latitude=${lat}&longitude=${lon}&term=${term}&limit=20`
 
     // create a headers object to append on our authorization token from the yelp fusion api
     let headerParams = new Headers()

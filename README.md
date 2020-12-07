@@ -5,7 +5,7 @@
 ## Bugs:
 
 - [ ] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues
-- [ ] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason?
+- [x] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason? | SOLUTION: Forgot to set styles on the FlatList to display itself like flex: 1
 
 ## Background
 

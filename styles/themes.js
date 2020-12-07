@@ -1,8 +1,7 @@
 /* /styles/themes.js */
-
 import * as colours from './colours'
 
-// com mon patterns will be spread throughout dark and light themes
+// common patterns will be spread throughout dark and light themes
 const commonPatterns = {
     // used for the stack navigator
     stackOptions: {

@@ -12,8 +12,9 @@ export default function HomeScreen() {
         <SafeAreaView edges={theme.safeAreaEdges}>
             <View>
                 <Text>Home Screen - Nearby Food Venues (kanata)</Text>
-                <VenueList />
             </View>
+            <VenueList />
+
         </SafeAreaView>
     )
 }
