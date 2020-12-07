@@ -9,12 +9,11 @@ export default function HomeScreen() {
     const theme = themes.light
 
     return (
-        <SafeAreaView edges={theme.safeAreaEdges}>
+        <SafeAreaView style={theme.flex} edges={theme.safeAreaEdges}>
             <View>
                 <Text>Home Screen - Nearby Food Venues (kanata)</Text>
             </View>
             <VenueList />
-
         </SafeAreaView>
     )
 }

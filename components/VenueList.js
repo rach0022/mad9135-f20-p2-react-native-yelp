@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
+import { ActivityIndicator, FlatList } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context'
+
 import { getVenues, getGeolocation } from '../helpers'
 import { themes } from '../styles'
+import VenueListItem from './VenueListItem';
 
 // based on react native docs: https://reactnative.dev/docs/network
 export default function VenueList() {
@@ -46,7 +49,7 @@ export default function VenueList() {
     // or the flatlist with the data of the food venues
 
     return (
-        <View style={{ flex: 1, padding: 24 }}>
+        <SafeAreaView style={theme.flex} edges={theme.edges}>
             {isLoading
                 ? <ActivityIndicator />
                 : (
@@ -56,11 +59,11 @@ export default function VenueList() {
                         keyExtractor={({ id }) => `${id}`}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
-                            return <Text style={{ color: theme.strongTextColor }}>{item.name}, {item.phone}</Text>
+                            return <VenueListItem venue={item} theme={theme} />
                         }}
                     />
                 )
             }
-        </View>
+        </SafeAreaView>
     )
 }

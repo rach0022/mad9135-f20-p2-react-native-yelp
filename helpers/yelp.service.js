@@ -1,9 +1,15 @@
 import { YELP_API_KEY } from '@env'
 const BASE_URL = 'https://api.yelp.com/v3/businesses/search'
 const DEFAULT_OPTIONS = {
-    coord: { lon: -75.76, lat: 45.35 }, // Algonquin College
+    coord: {
+        lon: -75.76,
+        lat: 45.35, // Algonquin College
+    },
+    radius: 1000, // 1 km
+    limit: 20,
+    term: '',
 }
-const cache = new Map()
+// const cache = new Map()
 
 /**
  * @typedef {Object} APIOptions
@@ -12,6 +18,9 @@ const cache = new Map()
  * @property {Object} coord Location coordinates
  * @property {number} coord.lon Longitude
  * @property {number} coord.lat Latitude
+ * @property {number} radius the search radius in meters
+ * @property {number} limit the number of lcoatiosn defaults 20
+ * @property {string} category the type of lcoations to return like bar, discgolf etc
  */
 
 /**
@@ -21,12 +30,13 @@ const cache = new Map()
  * @see https://www.yelp.com/developers/documentation/v3/get_started
  */
 export async function getVenues(options) {
-    const { coord, units } = Object.assign({}, DEFAULT_OPTIONS, options)
+    const { coord, units, term, limit, radius } = Object.assign({}, DEFAULT_OPTIONS, options)
     // const cacheItem = cache.get(coord)
     // if (cacheItem && !isExpired(cacheItem.current.dt)) {
     //     return cacheItem
     // }
-    const venues = await fetchVenues({ units, coord })
+    const venues = await fetchVenues({ units, coord, term, limit, radius })
+    // console.log(venues)
     // cache.set(coord, venues)
     return venues
 }
@@ -35,10 +45,10 @@ export async function getVenues(options) {
  * Private function to make the actual `fetch()` call to the API
  * @param {APIOptions} options
  */
-async function fetchVenues({ coord: { lat, lon }, term }) {
+async function fetchVenues({ coord: { lat, lon }, term, limit, radius }) {
     // create the url based on the lat lon and term (used for filtering)
-    const url = `${BASE_URL}?latitude=${lat}&longitude=${lon}&term=${term}&limit=20`
-
+    const url = `${BASE_URL}?latitude=${lat}&longitude=${lon}&term=${term}&limit=${limit}&radius=${radius}`
+    // console.log(url)
     // create a headers object to append on our authorization token from the yelp fusion api
     let headerParams = new Headers()
     headerParams.append('Authorization', `Bearer ${YELP_API_KEY}`)
