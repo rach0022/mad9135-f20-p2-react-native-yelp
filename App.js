@@ -2,7 +2,6 @@ import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { API_KEY } from '@env'
 import { themes } from './styles'
 // import my needed screens to display the app
 import TabScreen from './screens/TabScreen'

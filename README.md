@@ -2,6 +2,11 @@
 
 ## MAD9135 Final Project
 
+## Bugs:
+
+- [ ] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues
+- [x] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason? | SOLUTION: Forgot to set styles on the FlatList to display itself like flex: 1
+
 ## Background
 
 You will build a simple app to look-up nearby restaurants using the Yelp Fusion API - Business Search. You may choose to target either iOS or Android for your app design, but it should be consistent with Yelp's Mobile Style Guide
@@ -35,3 +40,7 @@ and Brand Guidelines
 - [ ] Invite GitHub user rlmckenney as a collaborator on your private repo.
 - [ ] Install your app on one of the phones from the lab cabinet and demo it to your teacher.
 - [ ] Submit both the URL of the GitHub code repo and the Expo public link to the Brightspace assignment folder.
+
+## Helpful Docs:
+
+- https://reactnative.dev/docs/network (look at the function componenet, similar standard but a location.service.js and yelp.service.js will need to be defined in order to repeat the fetch in multiple files or pass down the results as a prop?)

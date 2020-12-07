@@ -1,8 +1,9 @@
 /* /styles/themes.js */
-
+import { StyleSheet } from 'react-native'
 import * as colours from './colours'
+import * as spacing from './spacing'
 
-// com mon patterns will be spread throughout dark and light themes
+// common patterns will be spread throughout dark and light themes
 const commonPatterns = {
     // used for the stack navigator
     stackOptions: {
@@ -19,6 +20,12 @@ const commonPatterns = {
     },
     // used to determine safe area edges
     safeAreaEdges: ['right', 'left', 'bottom'],
+    styles: StyleSheet.create({
+        container: {
+            padding: spacing.base,
+            backgroundColor: colours.indigo200
+        }
+    })
 }
 
 export const light = {
