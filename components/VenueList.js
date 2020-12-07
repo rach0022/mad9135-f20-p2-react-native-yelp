@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, FlatList, Text, View, StyleSheet } from 'react-native';
 import { getVenues, getGeolocation } from '../helpers'
-import { themes, spacing } from '../styles'
+import { themes } from '../styles'
 
 // based on react native docs: https://reactnative.dev/docs/network
 export default function VenueList() {
@@ -11,13 +11,6 @@ export default function VenueList() {
 
     // get a reference to the current them, change later to update
     const theme = themes.light
-    // crate hte styels for the container based on the theme 
-    const styles = StyleSheet.create({
-        container: {
-            padding: spacing.base,
-            backgroundColor: theme.backgroundColor
-        }
-    })
 
     // lets set up a useState function to hold our coordinates from the user
     const [location, setLocation] = useState({
@@ -58,12 +51,12 @@ export default function VenueList() {
                 ? <ActivityIndicator />
                 : (
                     <FlatList
-                        style={styles.container}
+                        style={theme.styles.container}
                         data={data.businesses}
                         keyExtractor={({ id }) => `${id}`}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
-                            return <Text>{item.name}, {item.phone}</Text>
+                            return <Text style={{ color: theme.strongTextColor }}>{item.name}, {item.phone}</Text>
                         }}
                     />
                 )
