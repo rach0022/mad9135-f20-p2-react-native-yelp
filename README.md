@@ -2,6 +2,11 @@
 
 ## MAD9135 Final Project
 
+## Bugs:
+
+- [ ] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues
+- [ ] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason?
+
 ## Background
 
 You will build a simple app to look-up nearby restaurants using the Yelp Fusion API - Business Search. You may choose to target either iOS or Android for your app design, but it should be consistent with Yelp's Mobile Style Guide
