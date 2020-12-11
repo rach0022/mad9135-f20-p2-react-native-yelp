@@ -2,6 +2,9 @@
 
 ## MAD9135 Final Project
 
+### TO DO:
+- [ ] use expo location module to get users location
+
 ## Bugs:
 
 - [ ] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues

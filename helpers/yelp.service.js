@@ -45,10 +45,10 @@ export async function getVenues(options) {
  * Private function to make the actual `fetch()` call to the API
  * @param {APIOptions} options
  */
-async function fetchVenues({ coord: { lat, lon }, term, limit, radius, category }) {
+async function fetchVenues({ coord, term, limit, radius, category }) {
     // create the url based on the lat lon and term (used for filtering)
-    const url = `${BASE_URL}?latitude=${lat}&longitude=${lon}&term=${term}&limit=${limit}&radius=${radius}&categories=${category}`
-    // console.log(url)
+    const url = `${BASE_URL}?latitude=${coord.latitude}&longitude=${coord.longitude}&term=${term}&limit=${limit}&radius=${radius}&categories=${category}`
+    console.log(url)
     // create a headers object to append on our authorization token from the yelp fusion api
     let headerParams = new Headers()
     headerParams.append('Authorization', `Bearer ${YELP_API_KEY}`)
