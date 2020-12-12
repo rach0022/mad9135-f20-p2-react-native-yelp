@@ -16,6 +16,6 @@ export default async function getGeolocation({ latitude, longitude }) {
         throw new Error(response.statusText)
     }
     const data = await response.json()
-    console.log("data:", data, url)
+    console.log("data:", data, url, latitude, longitude)
     return data
 }

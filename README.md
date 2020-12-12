@@ -6,8 +6,8 @@
 
 - [x] use expo location module to get users location
 - [ ] when the user clicks on the flat list display the venue selected in the FoodVenueDetailsScreen
-- [ ] show restaurant distance in the flat list
-- [ ] order list by increasing distance
+- [x] show restaurant distance in the flat list
+- [x] order list by increasing distance
 - [ ] update location.service.js to reverse geocode and get the users city/ suburb location to be displayed in the app
 
 ## Bugs:
@@ -26,9 +26,9 @@ and Brand Guidelines
 
 - [ ] When initially opened, the application only displays a button for the user to click in order to download the list of restaurants nearby.
 - [x] While the application is fetching that data, a spinner should be displayed indicating to the user that something is happening.
-- [ ] The search that you will implement will need to use the native GPS in order to provide a list to the user based on his coordinates. Remember, you will need to ask the user's permission to use their current location.
-- [ ] The list of restaurants will show the names as well as the distance from the user's location displayed in kilometres (with 2 decimals).
-- [ ] The list should be ordered by increasing distance.
+- [x] The search that you will implement will need to use the native GPS in order to provide a list to the user based on his coordinates. Remember, you will need to ask the user's permission to use their current location.
+- [x] The list of restaurants will show the names as well as the distance from the user's location displayed in kilometres (with 2 decimals).
+- [x] The list should be ordered by increasing distance.
 - [ ] Clicking on one of the list items should show the details for that place.
 - [ ] Those restaurant details should include at least: name, phone, distance, price and rating.
 - [ ] Please format the information display and include an image inside the view.

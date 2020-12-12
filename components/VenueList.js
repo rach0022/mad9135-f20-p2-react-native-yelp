@@ -55,10 +55,14 @@ export default function VenueList({ category }) {
         // console.log("location", location)
     }, [location, setData])
 
+    //create a function to sort the data (the list of buisnesses) based on the distance from location (property)
+    const sortBuisnessesByDistance = (a, b) => a.distance - b.distance
+
     // if (data.businesses) {
     //     // console.log(Object.keys(data.businesses[0]), data.businesses)
     // }
     // // console.log(location)
+    // console.log(data)
 
     // using a ternary operator based on the state of is loading we either show the activity indicator 
     // or the flatlist with the data of the food venues
@@ -69,7 +73,7 @@ export default function VenueList({ category }) {
                 : (
                     <FlatList
                         style={theme.styles.container}
-                        data={data?.businesses || { id: 1, title: 'No Results' }}
+                        data={data?.businesses.sort(sortBuisnessesByDistance) || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card

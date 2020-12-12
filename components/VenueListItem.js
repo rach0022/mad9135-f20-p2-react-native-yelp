@@ -8,6 +8,10 @@ export default function VenueListItem({ venue, onPress, theme }) {
             <Text style={theme.styles.phone}>
                 Phone Number:  {venue.phone || 'unavaliable'}
             </Text>
+            <Text style={theme.styles.phone}>
+                {/* Using to fixed and dividing by 1000 we can show kilometers to two decimal places */}
+                Distance:  {`${(venue.distance / 1000).toFixed(2)}km` || 'unknown'}
+            </Text>
         </TouchableOpacity>
     )
 }
