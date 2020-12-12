@@ -15,6 +15,5 @@ export default function CoffeeScreen() {
             </View>
             <VenueList category={"coffee"} />
         </SafeAreaView>
-
     )
 }
