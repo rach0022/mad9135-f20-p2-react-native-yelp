@@ -11,7 +11,7 @@ export default function VenueList({ category }) {
     // first lets get our search term based on what the user searched
     // for now will be static but change later
     const [city, setCity] = useState(null)
-
+    console.log(getVenues, getGeolocation)
     // now lets set a container for the buisnesses to display in the flatlist
     // alos using react native lets grab its loading indicator and set up a variable to control it
     const [isLoading, setLoading] = useState(true);
@@ -42,14 +42,14 @@ export default function VenueList({ category }) {
     // and get our coordinates based on our city. need city and setLocation as depandancies
     // as we want it to rerun when the location changes
     // useEffect(() => {
-    //     getGeolocation.getGeolocation(city)
+    //     getGeolocation(city)
     //         .then(setLocation)
     //         .catch((error) => console.error(error))
     // }, [city, setLocation])
 
     // using a use effect hook we can fetch the venues whenever the location changes (for now static)
     useEffect(() => {
-        getVenues.getVenues({ coord: location, category: category })
+        getVenues({ coord: location, category: category })
             .then(setData)
             .catch((error) => console.error(error))
             .finally(() => setLoading(false))

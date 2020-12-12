@@ -3,11 +3,16 @@
 ## MAD9135 Final Project
 
 ### TO DO:
-- [ ] use expo location module to get users location
+
+- [x] use expo location module to get users location
+- [ ] when the user clicks on the flat list display the venue selected in the FoodVenueDetailsScreen
+- [ ] show restaurant distance in the flat list
+- [ ] order list by increasing distance
+- [ ] update location.service.js to reverse geocode and get the users city/ suburb location to be displayed in the app
 
 ## Bugs:
 
-- [ ] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues
+- [x] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues | solution forgot to default export and also did improt \* (all) as getVenues isntead of just import getVenues
 - [x] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason? | SOLUTION: Forgot to set styles on the FlatList to display itself like flex: 1
 
 ## Background

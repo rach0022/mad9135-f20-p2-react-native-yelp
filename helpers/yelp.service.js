@@ -29,7 +29,7 @@ const DEFAULT_OPTIONS = {
  * @returns {Object} Food Venue Results
  * @see https://www.yelp.com/developers/documentation/v3/get_started
  */
-export async function getVenues(options) {
+export default async function getVenues(options) {
     const { coord, units, term, limit, radius, category } = Object.assign({}, DEFAULT_OPTIONS, options)
     // const cacheItem = cache.get(coord)
     // if (cacheItem && !isExpired(cacheItem.current.dt)) {

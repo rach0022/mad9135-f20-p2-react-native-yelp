@@ -3,7 +3,7 @@ import { LOCATIONIQ_API_KEY } from '@env'
 const BASE_URL = 'https://us1.locationiq.com/v1'
 
 // based on location.service.demo from react weather app demo in MAD9135
-export async function getGeolocation(location) {
+export default async function getGeolocation(location) {
     const url = `${BASE_URL}/search.php?key=${LOCATIONIQ_API_KEY}&q=${location}&format=json`
 
     const response = await fetch(url)
