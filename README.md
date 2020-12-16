@@ -9,7 +9,7 @@
 - [x] show restaurant distance in the flat list
 - [x] order list by increasing distance
 - [ ] update location.service.js to reverse geocode and get the users city/ suburb location to be displayed in the app
-- [ ] create a component to show in an empty list
+- [x] create a component to show in an empty list | using the property emptyListCOmponent found in the react native docs I can set a component to display an empty container
 
 ## Bugs:
 

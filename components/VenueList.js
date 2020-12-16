@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 // import * as Location from 'expo-location'
 import { getVenues, getGeolocation, getDeviceLocation } from '../helpers'
 import { themes } from '../styles'
-import VenueListItem from './VenueListItem';
+import VenueListItem from './VenueListItem'
+import EmptyListItem from './EmptyListItem' // used for the empty state of the flat list
 
 // based on react native docs: https://reactnative.dev/docs/network
 export default function VenueList({ category, navigation }) {
@@ -80,6 +81,7 @@ export default function VenueList({ category, navigation }) {
                         style={theme.styles.container}
                         data={data?.businesses.sort(sortBuisnessesByDistance) || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
+                        ListEmptyComponent={EmptyListItem({ category })}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
                             return <VenueListItem
