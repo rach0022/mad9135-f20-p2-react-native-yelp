@@ -4,7 +4,7 @@ import { themes } from '../../styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import VenueList from '../../components/VenueList'
 
-export default function FoodTrucksScreen() {
+export default function FoodTrucksScreen({ navigation }) {
     // get a reference to the current them, change later to update
     const theme = themes.light
 
@@ -13,7 +13,7 @@ export default function FoodTrucksScreen() {
             <View>
                 <Text>Food Trucks</Text>
             </View>
-            <VenueList category={"foodtrucks"} />
+            <VenueList category={"foodtrucks"} navigation={navigation} />
         </SafeAreaView>
     )
 }

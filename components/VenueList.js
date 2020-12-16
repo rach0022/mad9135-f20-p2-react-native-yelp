@@ -7,7 +7,7 @@ import { themes } from '../styles'
 import VenueListItem from './VenueListItem';
 
 // based on react native docs: https://reactnative.dev/docs/network
-export default function VenueList({ category }) {
+export default function VenueList({ category, navigation }) {
     // first lets get our search term based on what the user searched
     // for now will be static but change later
     const [city, setCity] = useState(null)
@@ -58,6 +58,11 @@ export default function VenueList({ category }) {
     //create a function to sort the data (the list of buisnesses) based on the distance from location (property)
     const sortBuisnessesByDistance = (a, b) => a.distance - b.distance
 
+    // create an onPress callback function that will take the user to the venue details page for that selected venue
+    // const handleOnPress = ev => {
+    //     navigation.navigate('VenueDetailsScreen', {item.id})
+    // }
+
     // if (data.businesses) {
     //     // console.log(Object.keys(data.businesses[0]), data.businesses)
     // }
@@ -77,7 +82,14 @@ export default function VenueList({ category }) {
                         keyExtractor={({ id }) => `${id}`}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
-                            return <VenueListItem venue={item} theme={theme} />
+                            return <VenueListItem
+                                venue={item}
+                                theme={theme}
+                                onPress={ev => {
+                                    console.log(navigation)
+                                    navigation.navigate('VenueDetails', { id: item.id })
+                                }}
+                            />
                         }}
                     />
                 )

@@ -9,6 +9,7 @@
 - [x] show restaurant distance in the flat list
 - [x] order list by increasing distance
 - [ ] update location.service.js to reverse geocode and get the users city/ suburb location to be displayed in the app
+- [ ] create a component to show in an empty list
 
 ## Bugs:
 
@@ -16,6 +17,7 @@
 - [x] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason? | SOLUTION: Forgot to set styles on the FlatList to display itself like flex: 1
 - [x] using an async function in the use Effect awill cause an error | SOLUTION: wrote an external helper function that can have a .then chained onto
 - [x] destroy is not a function() when using the useEffect to get the location | SOLUTION: guard to see if the .lat and .lon properties exist on the location and if the .coord exist in the city
+- [ ] loader will not show when spinning
 
 ## Background
 

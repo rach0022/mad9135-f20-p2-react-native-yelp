@@ -3,6 +3,7 @@ import FocusedStatusBar from '../../components/FocusedStatusBar'
 import { createStackNavigator } from '@react-navigation/stack'
 import FoodTrucksScreen from './FoodTrucksScreen'
 import { themes } from '../../styles'
+import VenueDetailsScreen from '../VenueDetailsScreen'
 
 const FoodTrucksStack = createStackNavigator()
 
@@ -16,6 +17,7 @@ export default function FoodTrucksNavigator() {
             <FoodTrucksStack.Navigator
                 screenOptions={theme.stackOptions}>
                 <FoodTrucksStack.Screen name="Food Trucks" component={FoodTrucksScreen} />
+                <FoodTrucksStack.Screen name="VenueDetails" component={VenueDetailsScreen} options={{ title: 'Venue' }} />
             </FoodTrucksStack.Navigator>
         </>
     )

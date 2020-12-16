@@ -1,5 +1,6 @@
 import { YELP_API_KEY } from '@env'
-const BASE_URL = 'https://api.yelp.com/v3/businesses/search'
+const BASE_URL = 'https://api.yelp.com/v3/businesses/'
+const SEARCH_ROUTE = 'search'
 const DEFAULT_OPTIONS = {
     coord: {
         lon: -75.76,
@@ -21,6 +22,7 @@ const DEFAULT_OPTIONS = {
  * @property {number} radius the search radius in meters
  * @property {number} limit the number of lcoatiosn defaults 20
  * @property {string} category the type of lcoations to return like bar, discgolf etc
+ * @property {string?} id optional string value containing the id of the restaurant for specific searches
  */
 
 /**
@@ -45,9 +47,12 @@ export default async function getVenues(options) {
  * Private function to make the actual `fetch()` call to the API
  * @param {APIOptions} options
  */
-async function fetchVenues({ coord, term, limit, radius, category }) {
+async function fetchVenues({ coord, term, limit, radius, category, id = null }) {
+    // if an id is specified we will change the url to be based on the 
     // create the url based on the lat lon and term (used for filtering)
-    const url = `${BASE_URL}?latitude=${coord.lat}&longitude=${coord.lon}&term=${term}&limit=${limit}&radius=${radius}&categories=${category}`
+    const url = (id) 
+        ? `${BASE_URL}/${id}`
+        : `${BASE_URL}${SEARCH_ROUTE}?latitude=${coord.lat}&longitude=${coord.lon}&term=${term}&limit=${limit}&radius=${radius}&categories=${category}`
     // console.log(url)
     // create a headers object to append on our authorization token from the yelp fusion api
     let headerParams = new Headers()
