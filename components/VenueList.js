@@ -6,6 +6,7 @@ import { getVenues, getGeolocation, getDeviceLocation } from '../helpers'
 import { themes } from '../styles'
 import VenueListItem from './VenueListItem'
 import EmptyListItem from './EmptyListItem' // used for the empty state of the flat list
+import VenueListHeader from './VenueListHeader'
 
 // based on react native docs: https://reactnative.dev/docs/network
 export default function VenueList({ category, navigation }) {
@@ -82,6 +83,7 @@ export default function VenueList({ category, navigation }) {
                         data={data?.businesses.sort(sortBuisnessesByDistance) || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
                         ListEmptyComponent={EmptyListItem({ category })}
+                        ListHeaderComponent={VenueListHeader({ category, byline: "Click on any nearby location to see more" })}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
                             return <VenueListItem
