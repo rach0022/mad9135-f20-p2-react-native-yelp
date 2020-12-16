@@ -16,7 +16,7 @@ export default function VenueList({ category, navigation }) {
 
     // now lets set a container for the buisnesses to display in the flatlist
     // alos using react native lets grab its loading indicator and set up a variable to control it
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(true)
     const [data, setData] = useState([]);
 
     // lets set up a useState function to hold our coordinates from the user, if the user denies position

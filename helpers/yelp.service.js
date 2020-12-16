@@ -1,6 +1,6 @@
 import { YELP_API_KEY } from '@env'
-const BASE_URL = 'https://api.yelp.com/v3/businesses/'
-const SEARCH_ROUTE = 'search'
+const BASE_URL = 'https://api.yelp.com/v3/businesses'
+const SEARCH_ROUTE = '/search'
 const DEFAULT_OPTIONS = {
     coord: {
         lon: -75.76,
@@ -22,7 +22,7 @@ const DEFAULT_OPTIONS = {
  * @property {number} radius the search radius in meters
  * @property {number} limit the number of lcoatiosn defaults 20
  * @property {string} category the type of lcoations to return like bar, discgolf etc
- * @property {string?} id optional string value containing the id of the restaurant for specific searches
+ * @property {string?} id optional string value containing the id of the restaurant for specific searches, if supplied all other values will be ignored
  */
 
 /**
@@ -32,12 +32,12 @@ const DEFAULT_OPTIONS = {
  * @see https://www.yelp.com/developers/documentation/v3/get_started
  */
 export default async function getVenues(options) {
-    const { coord, units, term, limit, radius, category } = Object.assign({}, DEFAULT_OPTIONS, options)
+    const { coord, units, term, limit, radius, category, id = null } = Object.assign({}, DEFAULT_OPTIONS, options)
     // const cacheItem = cache.get(coord)
     // if (cacheItem && !isExpired(cacheItem.current.dt)) {
     //     return cacheItem
     // }
-    const venues = await fetchVenues({ units, coord, term, limit, radius, category })
+    const venues = await fetchVenues({ units, coord, term, limit, radius, category, id })
     // console.log(venues)
     // cache.set(coord, venues)
     return venues
@@ -50,7 +50,7 @@ export default async function getVenues(options) {
 async function fetchVenues({ coord, term, limit, radius, category, id = null }) {
     // if an id is specified we will change the url to be based on the 
     // create the url based on the lat lon and term (used for filtering)
-    const url = (id) 
+    const url = (id)
         ? `${BASE_URL}/${id}`
         : `${BASE_URL}${SEARCH_ROUTE}?latitude=${coord.lat}&longitude=${coord.lon}&term=${term}&limit=${limit}&radius=${radius}&categories=${category}`
     // console.log(url)
@@ -66,5 +66,6 @@ async function fetchVenues({ coord, term, limit, radius, category, id = null }) 
 
     const response = await fetch(request)
     if (!response.ok) throw new Error(response.statusText)
+    // console.log("RESPONSE:\n\n\n", response.json())
     return response.json()
 }

@@ -1,27 +1,53 @@
-import React from 'react'
-import { View, Text, Button } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { View, Text, Button, ActivityIndicator } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { safeAreaEdges } from '../styles'
-import VenueDetails from '../components/VenueDetails'
+import { getVenues } from '../helpers'
 
 export default function VenueDetailsScreen({ navigation, route }) {
-    // first get the id of the venue
+    // using a useState varaible we can hold the fetched venue response inside venue
+    const [venue, setVenue] = useState(null)
+    const [isLoading, setLoading] = useState(true) // used for the activity indicator element
+
+    // get the id of the venue from the route params
     const id = route.params.id
 
-    // this is an example of how I will handle the currently displayed restaurant
-    const [val, setVal] = React.useState('')
-    React.useEffect(() => {
-        setVal('Taco Place')
-    }, [])
-    console.log(val)
+    // // this is an example of how I will handle the currently displayed restaurant
+    // const [val, setVal] = React.useState('')
+    // React.useEffect(() => {
+    //     setVal('Taco Place')
+    // }, [])
+    // console.log(val)
 
+    // using a use effect hook we can fetch the specific venue using our id as the 
+    useEffect(() => {
+        // check if we have an id
+        if (id) {
+            // get the venue only suppliying the id to get the details of the venue from the yelp api
+            getVenues({ id })
+                .then(data => {
+                    console.log(data)
+                    return data
+                })
+                .then(setVenue)
+                .catch((error) => console.error(error))
+                .finally(() => setLoading(false))
+        }
+
+        // console.log("location", location)
+    }, [id, setVenue, setLoading])
+
+    // return eithe rthe activity indicator if the fetch is still taking place or the return venue details
+    console.log(`Venue: \n\n\n${venue}\n\n\n`)
     return (
         <SafeAreaView edges={safeAreaEdges}>
-            <View>
-                <Text>Details of the Selected Food Venue, ex: ({val})</Text>
-                <VenueDetails id={id} />
-                <Button title="Back" onPress={navigation.goBack} />
-            </View>
+            {isLoading
+                ? <ActivityIndicator />
+                : (<View>
+                    <Text>Details of the Selected Food Venue( id: {`${id}`}), name: {venue?.name || ""}</Text>
+                    <Button title="Back" onPress={navigation.goBack} />
+                </View>)
+            }
         </SafeAreaView>
     )
 }
