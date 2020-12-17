@@ -4,6 +4,7 @@
 
 ### TO DO:
 
+- [ ] add a refresh button
 - [x] use expo location module to get users location
 - [ ] when the user clicks on the flat list display the venue selected in the FoodVenueDetailsScreen
 - [x] show restaurant distance in the flat list
@@ -11,7 +12,9 @@
 - [ ] update location.service.js to reverse geocode and get the users city/ suburb location to be displayed in the app
 - [x] create a component to show in an empty list | using the property emptyListCOmponent found in the react native docs I can set a component to display an empty container
 - [x] add a header component to the venue list using the listheaderComponent prop
-- [ ] convert the venue list screeens into reusable components
+- [x] convert the venue list screeens into reusable components | Solution using the initialParams prop I am able to pass props dopwn to scren components for usage
+- [ ] style header and footer for venue list
+- [ ] add details of venue to Venue Details
 
 ## Bugs:
 

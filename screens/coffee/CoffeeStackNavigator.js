@@ -1,7 +1,8 @@
 import React from 'react'
 import FocusedStatusBar from '../../components/FocusedStatusBar'
 import { createStackNavigator } from '@react-navigation/stack'
-import CoffeeScreen from './CoffeeScreen'
+// import CoffeeScreen from './CoffeeScreen'
+import VenueScreen from '../VenueScreen'
 import { themes } from '../../styles'
 import VenueDetailsScreen from '../VenueDetailsScreen'
 
@@ -17,7 +18,7 @@ export default function CoffeeStackNavigator() {
             <FocusedStatusBar style="dark" />
             <CoffeeStack.Navigator
                 screenOptions={theme.stackOptions}>
-                <CoffeeStack.Screen name="Coffee" component={CoffeeScreen} />
+                <CoffeeStack.Screen name="Coffee" component={VenueScreen} initialParams={{ category: 'coffee', byline: 'coffee coffee' }} />
                 <CoffeeStack.Screen name="VenueDetails" component={VenueDetailsScreen} options={{ title: 'Venue' }} />
             </CoffeeStack.Navigator>
         </>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ActivityIndicator, FlatList } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { FlatList } from 'react-native'
 // import * as Location from 'expo-location'
 import { getVenues, getGeolocation, getDeviceLocation } from '../helpers'
 import { themes } from '../styles'
@@ -76,7 +75,7 @@ export default function VenueList({ category, navigation }) {
     // using a ternary operator based on the state of is loading we either show the activity indicator 
     // or the flatlist with the data of the food venues
     return (
-        <SafeAreaView style={{ ...theme.styles.safeView }} edges={theme.edges}>
+        <>
             {isLoading
                 ? <Loader />
                 : (
@@ -101,6 +100,6 @@ export default function VenueList({ category, navigation }) {
                     />
                 )
             }
-        </SafeAreaView>
+        </>
     )
 }

@@ -1,7 +1,8 @@
 import React from 'react'
 import FocusedStatusBar from '../../components/FocusedStatusBar'
 import { createStackNavigator } from '@react-navigation/stack'
-import HomeScreen from './HomeScreen'
+// import HomeScreen from './HomeScreen'
+import VenueScreen from '../VenueScreen'
 import { themes } from '../../styles'
 import VenueDetailsScreen from '../VenueDetailsScreen'
 
@@ -16,7 +17,7 @@ export default function HomeStackNavigator() {
             <FocusedStatusBar style="dark" />
             <HomeStack.Navigator
                 screenOptions={theme.stackOptions}>
-                <HomeStack.Screen name="Nearby" component={HomeScreen} />
+                <HomeStack.Screen name="Nearby" component={VenueScreen} initialParams={{ category: "", byline: "What is there to eat nearby?" }} />
                 <HomeStack.Screen name="VenueDetails" component={VenueDetailsScreen} options={{ title: 'Venue' }} />
             </HomeStack.Navigator>
         </>

@@ -1,7 +1,8 @@
 import React from 'react'
 import FocusedStatusBar from '../../components/FocusedStatusBar'
 import { createStackNavigator } from '@react-navigation/stack'
-import BakeriesScreen from './BakeriesScreen'
+// import BakeriesScreen from './BakeriesScreen'
+import VenueScreen from '../VenueScreen'
 import { themes } from '../../styles'
 import VenueDetailsScreen from '../VenueDetailsScreen'
 
@@ -16,7 +17,7 @@ export default function BakeriesStackNavigator() {
             <FocusedStatusBar style="dark" />
             <BakeriesStack.Navigator
                 screenOptions={theme.stackOptions}>
-                <BakeriesStack.Screen name="Bakeries" component={BakeriesScreen} />
+                <BakeriesStack.Screen name="Bakeries" component={VenueScreen} initialParams={{ category: 'bakeries', byline: 'Find freshley baked goods' }} />
                 <BakeriesStack.Screen name="VenueDetails" component={VenueDetailsScreen} options={{ title: 'Venue' }} />
             </BakeriesStack.Navigator>
         </>
