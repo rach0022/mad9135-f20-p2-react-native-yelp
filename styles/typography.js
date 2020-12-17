@@ -43,3 +43,9 @@ export const bodyText = {
     fontWeight: fwNormal,
     lineHeight: lh3
 }
+export const headerText = {
+    color: colours.indigo900,
+    fontSize: fs7,
+    fontWeight: fwExtraBold,
+    lineHeight: lh8
+}

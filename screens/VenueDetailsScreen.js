@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, Button, ActivityIndicator } from 'react-native'
+import { View, Text, Button, Image } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { safeAreaEdges } from '../styles'
+import { themes } from '../styles'
 import { getVenues } from '../helpers'
 import Loader from '../components/Loader'
 
@@ -12,6 +12,9 @@ export default function VenueDetailsScreen({ navigation, route }) {
 
     // get the id of the venue from the route params
     const id = route.params.id
+
+    // get a reference to our theme, change to useTheme if there is time
+    const theme = themes.light
 
     // // this is an example of how I will handle the currently displayed restaurant
     // const [val, setVal] = React.useState('')
@@ -26,10 +29,6 @@ export default function VenueDetailsScreen({ navigation, route }) {
         if (id) {
             // get the venue only suppliying the id to get the details of the venue from the yelp api
             getVenues({ id })
-                .then(data => {
-                    console.log(data)
-                    return data
-                })
                 .then(setVenue)
                 .catch((error) => console.error(error))
                 .finally(() => setLoading(false))
@@ -39,22 +38,33 @@ export default function VenueDetailsScreen({ navigation, route }) {
     }, [id, setVenue, setLoading])
 
     // return eithe rthe activity indicator if the fetch is still taking place or the return venue details
-    console.log(`Venue: \n\n\n${venue}\n\n\n`, venue)
+    // console.log(`Venue: \n\n\n${venue}\n\n\n`, venue)
 
     // map the hours to a table element to display them properly
     return (
-        <SafeAreaView edges={safeAreaEdges}>
+        <SafeAreaView edges={theme.safeAreaEdges} style={{ justifyContent: 'center', padding: 10, backgroundColor: theme.accentColor, alignContent: 'center' }}>
             {isLoading
                 ? <Loader />
-                : (<View>
-                    <Text>Details of the Selected Food Venue( id: {`${id}`})</Text>
-                    <Text>{venue?.name || ""}</Text>
-                    <Text>{venue?.phone || "phone number unavaliable"}</Text>
-                    <Text>{venue?.distance || "unknown distance"}</Text>
-                    <Text>{venue?.price || "unknown price"}</Text>
-                    <Text>{venue?.rating || "unknown rating"}</Text>
-                    <Button title="Back" onPress={navigation.goBack} />
-                </View>)
+                : (<>
+                    {/* Will load an image in to the cache if it doesnt exist otherwise serve from cache, from react docs */}
+                    {/* Since the image is provided from a uri I have to use the uri attribute instead of url */}
+                    <Image
+                        source={{
+                            uri: venue.image_url,
+                            cache: 'only-if-cached'
+                        }}
+                        style={theme.styles.detailImage}
+                    />
+                    {/* <Text>Details of the Selected Food Venue( id: {`${id}`})</Text> */}
+                    <Text style={theme.styles.headerText}>{venue.name || ""}</Text>
+                    <Text style={theme.styles.bodyText}>{venue.phone || "phone number unavaliable"}</Text>
+                    <Text style={theme.styles.bodyText}>{venue.distance || "unknown distance"}</Text>
+                    <Text style={theme.styles.bodyText}>{venue.price || "unknown price"}</Text>
+                    <Text style={theme.styles.bodyText}>{venue.rating || "unknown rating"}</Text>
+                    <View style={theme.styles.button}>
+                        <Button color={theme.strongTextColor} title="Back" onPress={navigation.goBack} />
+                    </View>
+                </>)
             }
         </SafeAreaView>
     )

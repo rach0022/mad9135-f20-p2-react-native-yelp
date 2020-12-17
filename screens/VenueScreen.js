@@ -11,9 +11,11 @@ export default function VenueScreen({ navigation, route }) {
     // get a reference to the current them, change later to update
     const theme = themes.light
 
+    const label = (route.params.category == "") ? ' ' : ` ${route.params.category.charAt(0).toUpperCase() + route.params.category.slice(1)} `
+
     return (
         <>
-            <Text>Nearby {`${route.params.category}`} venue locations</Text>
+            <Text>Nearby{label}venue locations</Text>
             <Text>{route.params.byline}</Text>
             <VenueList category={route.params.category} navigation={navigation} />
         </>

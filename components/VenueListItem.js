@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 
+// the venue list item will display the restaurant name, phone nubmer and distance from user
 export default function VenueListItem({ venue, onPress, theme }) {
     return (
         <TouchableOpacity style={theme.styles.card} onPress={onPress}>

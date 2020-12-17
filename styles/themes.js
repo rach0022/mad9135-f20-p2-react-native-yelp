@@ -63,6 +63,19 @@ const commonPatterns = {
         spinner: {
             height: 100,
             width: 100,
+        },
+        detailImage: {
+            width: 250,
+            height: 250
+        },
+        bodyText: {
+            ...typography.bodyText
+        },
+        headerText: {
+            ...typography.headerText
+        },
+        button: {
+            width: 100
         }
     })
 }

@@ -38,8 +38,6 @@ export default function VenueList({ category, navigation }) {
     // as we want it to rerun when the location changes
     useEffect(() => {
         if (city?.coords) {
-            // first set the loading to true just incase this was reran by the user clickign the button
-            setLoading(true)
             getGeolocation(city.coords)
                 .then(setLocation)
                 .catch((error) => console.error(error))
@@ -86,17 +84,25 @@ export default function VenueList({ category, navigation }) {
                         data={data?.businesses.sort(sortBuisnessesByDistance) || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
                         ListEmptyComponent={EmptyListItem({ category })}
-                        ListHeaderComponent={VenueListHeader({ data: data.businesses, category, byline: "Click on any nearby location to see more", setter: setCity, locator: getDeviceLocation })}
+                        ListHeaderComponent={
+                            VenueListHeader({
+                                data: data.businesses,
+                                category,
+                                byline: "Click on any nearby location to see more",
+                                setter: setCity,
+                                locator: getDeviceLocation,
+                                loader: setLoading,
+                                theme: theme,
+                                location: location,
+                            })
+                        }
                         ListFooterComponent={VenueListFooter}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
                             return <VenueListItem
                                 venue={item}
                                 theme={theme}
-                                onPress={ev => {
-                                    console.log(navigation)
-                                    navigation.navigate('VenueDetails', { id: item.id })
-                                }}
+                                onPress={ev => navigation.navigate('VenueDetails', { id: item.id })}
                             />
                         }}
                     />

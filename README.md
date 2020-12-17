@@ -6,6 +6,9 @@
 
 - [x] add a refresh button
 - [ ] map venue hours to some table element to display them to user
+- [ ] add a search bar to filter the results of the venue list
+- [ ] create a no image supplied image?
+- [ ] create an icon for the app, maybe call it Food Finder?
 - [x] use expo location module to get users location
 - [ ] when the user clicks on the flat list display the venue selected in the FoodVenueDetailsScreen
 - [x] show restaurant distance in the flat list
@@ -37,8 +40,8 @@ and Brand Guidelines
 - [x] The search that you will implement will need to use the native GPS in order to provide a list to the user based on his coordinates. Remember, you will need to ask the user's permission to use their current location.
 - [x] The list of restaurants will show the names as well as the distance from the user's location displayed in kilometres (with 2 decimals).
 - [x] The list should be ordered by increasing distance.
-- [ ] Clicking on one of the list items should show the details for that place.
-- [ ] Those restaurant details should include at least: name, phone, distance, price and rating.
+- [x] Clicking on one of the list items should show the details for that place.
+- [x] Those restaurant details should include at least: name, phone, distance, price and rating.
 - [ ] Please format the information display and include an image inside the view.
 - [ ] Think about what other features you can add to improve the app.
 
