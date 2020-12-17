@@ -4,7 +4,8 @@
 
 ### TO DO:
 
-- [ ] add a refresh button
+- [x] add a refresh button
+- [ ] map venue hours to some table element to display them to user
 - [x] use expo location module to get users location
 - [ ] when the user clicks on the flat list display the venue selected in the FoodVenueDetailsScreen
 - [x] show restaurant distance in the flat list
