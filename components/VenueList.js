@@ -38,12 +38,14 @@ export default function VenueList({ category, navigation }) {
     // as we want it to rerun when the location changes
     useEffect(() => {
         if (city?.coords) {
+            // first set the loading to true just incase this was reran by the user clickign the button
+            setLoading(true)
             getGeolocation(city.coords)
                 .then(setLocation)
                 .catch((error) => console.error(error))
         }
         // console.log(city, "city")
-    }, [city, setLocation])
+    }, [city, setLocation, setLoading])
 
     // using a use effect hook we can fetch the venues whenever the location changes (for now static)
     useEffect(() => {
@@ -84,7 +86,7 @@ export default function VenueList({ category, navigation }) {
                         data={data?.businesses.sort(sortBuisnessesByDistance) || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
                         ListEmptyComponent={EmptyListItem({ category })}
-                        ListHeaderComponent={VenueListHeader({ category, byline: "Click on any nearby location to see more" })}
+                        ListHeaderComponent={VenueListHeader({ data: data.businesses, category, byline: "Click on any nearby location to see more", setter: setCity, locator: getDeviceLocation })}
                         ListFooterComponent={VenueListFooter}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
