@@ -11,6 +11,16 @@ export const indigo200 = '#C7D2FE'
 export const indigo100 = '#E0E7FF'
 export const indigo50 = '#EEF2FF'
 
+export const orange900 = 'hsl(14, 100%, 37%)' //taken from material design
+export const orange800 = 'hsl(14, 100%, 42%)' //taken from material design
+export const orange700 = 'hsl(14, 100%, 47%)' //taken from material design
+export const orange600 = 'hsl(14, 100%, 52%)' //taken from material design
+export const orange500 = 'hsl(14, 100%, 57%)' //taken from material design
+export const orange400 = 'hsl(14, 100%, 61%)' //taken from material design
+export const orange300 = 'hsl(14, 100%, 66%)' //taken from material design
+export const orange200 = 'hsl(14, 100%, 71%)' //taken from material design
+export const orange100 = 'hsl(14, 100%, 76%)' //taken from material design
+
 export const gray900 = '#111827'
 export const gray800 = '#1F2937'
 export const gray700 = '#374151'

@@ -38,14 +38,22 @@ export const buttonFontSize = fs4
 
 /* Define common styles */
 export const bodyText = {
-    color: colours.baseText,
     fontSize: fs3,
     fontWeight: fwNormal,
     lineHeight: lh3
 }
 export const headerText = {
-    color: colours.indigo900,
     fontSize: fs7,
     fontWeight: fwExtraBold,
-    lineHeight: lh8
+    lineHeight: lh8,
+    textAlign: 'center'
+}
+
+export const byLine = {
+    fontSize: fs5,
+    fontWeight: fwMedium,
+    lineHeight: lh5,
+    paddingBottom: lh9,
+    textAlign: 'center'
+
 }

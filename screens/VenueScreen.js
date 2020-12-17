@@ -14,10 +14,10 @@ export default function VenueScreen({ navigation, route }) {
     const label = (route.params.category == "") ? ' ' : ` ${route.params.category.charAt(0).toUpperCase() + route.params.category.slice(1)} `
 
     return (
-        <>
-            <Text>Nearby{label}venue locations</Text>
-            <Text>{route.params.byline}</Text>
+        <SafeAreaView style={{ ...theme.styles.center, ...theme.styles.container }}>
+            <Text style={theme.styles.headerText}>Nearby{label}venue locations</Text>
+            <Text style={theme.styles.byLine}>{route.params.byline}</Text>
             <VenueList category={route.params.category} navigation={navigation} />
-        </>
+        </SafeAreaView>
     )
 }

@@ -4,17 +4,21 @@ import * as colours from './colours'
 import * as spacing from './spacing'
 import * as typography from './typography'
 
+const brandColour = '#ff5722'
+const lightBrandColour = '#ff8a50'
+const darkBrandColour = '#c41c00'
+
 // common patterns will be spread throughout dark and light themes
 const commonPatterns = {
     // used for the stack navigator
     stackOptions: {
-        headerStyle: { backgroundColor: colours.indigo800 },
+        headerStyle: { backgroundColor: colours.orange800 },
         headerTintColor: colours.gray100
     },
     // used for the bottom tab bar navigation
     tabBarOptions: {
-        activeTintColor: colours.indigo500,
-        inactiveTintColor: colours.indigo100,
+        activeTintColor: colours.orange500,
+        inactiveTintColor: colours.orange100,
         style: {
             backgroundColor: colours.gray900
         }
@@ -24,7 +28,7 @@ const commonPatterns = {
     styles: StyleSheet.create({
         container: {
             padding: spacing.base,
-            backgroundColor: colours.indigo200,
+            backgroundColor: colours.orange200,
         },
         view: {
             flex: 1,
@@ -35,7 +39,7 @@ const commonPatterns = {
         card: {
             paddingVertical: spacing.small,
             borderBottomWidth: spacing.hairline,
-            borderBottomColor: colours.indigo200
+            borderBottomColor: colours.orange200
         },
         title: { fontSize: typography.fs4, color: colours.darkText },
         phone: {
@@ -74,21 +78,31 @@ const commonPatterns = {
         headerText: {
             ...typography.headerText
         },
+        byLine: {
+            ...typography.byLine
+        },
         button: {
             width: 100
+        },
+        center: {
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        footer: {
+            marginBottom: 15
         }
     })
 }
 
 export const light = {
-    primaryColor: colours.indigo800,
-    accentColor: colours.indigo200,
+    primaryColor: colours.orange800,
+    accentColor: colours.orange200,
     baseTextColor: colours.gray700,
     strongTextColor: colours.gray900,
     subduedTextColor: colours.gray500,
     inverseTextColor: colours.white,
-    listSeparatorColor: colours.indigo100,
-    bodyBackgroundColor: colours.indigo50,
+    listSeparatorColor: colours.orange100,
+    bodyBackgroundColor: colours.orange50,
     ...commonPatterns
 }
 

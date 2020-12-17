@@ -22,9 +22,9 @@ export default function VenueListHeader({ data, category, byline, setter, locato
     const label = (category == "") ? ' ' : ` ${category.charAt(0).toUpperCase() + category.slice(1)} `
 
     return (
-        <View>
-            <Text>{data.length} Nearby{label}Venue's to {location.address.neighbourhood}</Text>
-            <Text>{byline}</Text>
+        <View style={theme.styles.center}>
+            <Text style={theme.styles.bodyText}>{data.length} Nearby{label}Venue's to {location.address.neighbourhood}</Text>
+            <Text style={theme.styles.bodyText}>{byline}</Text>
             <View style={theme.styles.button}>
                 <Button color={theme.strongTextColor} onPress={handleLoadCity} title="Refresh" />
             </View>

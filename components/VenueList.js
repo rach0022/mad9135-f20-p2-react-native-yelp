@@ -96,7 +96,7 @@ export default function VenueList({ category, navigation }) {
                                 location: location,
                             })
                         }
-                        ListFooterComponent={VenueListFooter}
+                        ListFooterComponent={VenueListFooter({ theme })}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
                             return <VenueListItem

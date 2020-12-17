@@ -42,7 +42,7 @@ export default function VenueDetailsScreen({ navigation, route }) {
 
     // map the hours to a table element to display them properly
     return (
-        <SafeAreaView edges={theme.safeAreaEdges} style={{ justifyContent: 'center', padding: 10, backgroundColor: theme.accentColor, alignContent: 'center' }}>
+        <SafeAreaView edges={theme.safeAreaEdges} style={{ ...theme.styles.center, ...theme.styles.container }}>
             {isLoading
                 ? <Loader />
                 : (<>

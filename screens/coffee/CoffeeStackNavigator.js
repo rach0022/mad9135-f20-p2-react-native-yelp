@@ -18,7 +18,7 @@ export default function CoffeeStackNavigator() {
             <FocusedStatusBar style="dark" />
             <CoffeeStack.Navigator
                 screenOptions={theme.stackOptions}>
-                <CoffeeStack.Screen name="Coffee" component={VenueScreen} initialParams={{ category: 'coffee', byline: 'coffee coffee' }} />
+                <CoffeeStack.Screen name="Coffee" component={VenueScreen} initialParams={{ category: 'coffee', byline: 'The closest locations for your caffeine fix' }} />
                 <CoffeeStack.Screen name="VenueDetails" component={VenueDetailsScreen} options={{ title: 'Venue' }} />
             </CoffeeStack.Navigator>
         </>

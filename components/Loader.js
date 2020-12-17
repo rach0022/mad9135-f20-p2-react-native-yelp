@@ -11,7 +11,7 @@ export default function Loader() {
     // return a view with an activity indicator spinning in the middle
     return (
         <View style={{ ...theme.styles.fullscreen, ...theme.styles.flex }}>
-            <ActivityIndicator size="large" color="#00FF00" style={theme.styles.spinner} />
+            <ActivityIndicator size="large" color={theme.primaryColor} style={theme.styles.spinner} />
         </View>
     )
 }
