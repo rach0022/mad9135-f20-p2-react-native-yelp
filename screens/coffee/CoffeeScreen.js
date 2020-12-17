@@ -9,10 +9,8 @@ export default function CoffeeScreen({ navigation }) {
     const theme = themes.light
 
     return (
-        <SafeAreaView style={theme.flex} edges={theme.safeAreaEdges}>
-            <View>
-                <Text>Coffee Coffee</Text>
-            </View>
+        <SafeAreaView style={theme.styles.safeView} edges={theme.safeAreaEdges}>
+            <Text>Coffee Coffee</Text>
             <VenueList category={"coffee"} navigation={navigation} />
         </SafeAreaView>
     )

@@ -45,8 +45,25 @@ const commonPatterns = {
         },
         flex: {
             flex: 1,
-            flexGrow: 0
+            flexGrow: 0,
+            justifyContent: "center"
         },
+        // to make fullscreen i use absolute position with top bot left and right as 0 like css 
+        fullscreen: {
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            right: 0,
+            left: 0
+        },
+        safeView: {
+            padding: spacing.larger,
+            flexGrow: 0,
+        },
+        spinner: {
+            height: 100,
+            width: 100,
+        }
     })
 }
 

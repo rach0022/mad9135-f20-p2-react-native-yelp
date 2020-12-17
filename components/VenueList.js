@@ -7,6 +7,8 @@ import { themes } from '../styles'
 import VenueListItem from './VenueListItem'
 import EmptyListItem from './EmptyListItem' // used for the empty state of the flat list
 import VenueListHeader from './VenueListHeader'
+import VenueListFooter from './VenueListFooter'
+import Loader from './Loader'
 
 // based on react native docs: https://reactnative.dev/docs/network
 export default function VenueList({ category, navigation }) {
@@ -74,9 +76,9 @@ export default function VenueList({ category, navigation }) {
     // using a ternary operator based on the state of is loading we either show the activity indicator 
     // or the flatlist with the data of the food venues
     return (
-        <SafeAreaView style={theme.flex} edges={theme.edges}>
+        <SafeAreaView style={{ ...theme.styles.safeView }} edges={theme.edges}>
             {isLoading
-                ? <ActivityIndicator />
+                ? <Loader />
                 : (
                     <FlatList
                         style={theme.styles.container}
@@ -84,6 +86,7 @@ export default function VenueList({ category, navigation }) {
                         keyExtractor={({ id }) => `${id}`}
                         ListEmptyComponent={EmptyListItem({ category })}
                         ListHeaderComponent={VenueListHeader({ category, byline: "Click on any nearby location to see more" })}
+                        ListFooterComponent={VenueListFooter}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
                             return <VenueListItem
