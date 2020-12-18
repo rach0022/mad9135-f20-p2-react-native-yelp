@@ -7,7 +7,7 @@ const DEFAULT_OPTIONS = {
         lat: 45.35, // Algonquin College
     },
     radius: 2500, // 2.5km
-    limit: 20,
+    limit: 40,
     term: '',
     category: '',
 }

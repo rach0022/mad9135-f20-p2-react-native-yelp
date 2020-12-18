@@ -119,7 +119,7 @@ export default function VenueList({ category, navigation, city, isLoading, setLo
                 ? <Loader />
                 : (
                     <FlatList
-                        style={theme.styles.container}
+                        style={{ ...theme.styles.container, paddingTop: 0 }}
                         data={venues || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
                         ListEmptyComponent={EmptyListItem({ category })}

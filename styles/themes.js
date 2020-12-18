@@ -39,7 +39,18 @@ const commonPatterns = {
         card: {
             paddingVertical: spacing.small,
             borderBottomWidth: spacing.hairline,
-            borderBottomColor: colours.orange200
+            borderColor: colours.orange900,
+            backgroundColor: colours.orange300,
+            borderWidth: 2,
+            borderBottomRightRadius: 10,
+            borderBottomLeftRadius: 10,
+            marginTop: 10,
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        cardHeader: {
+            backgroundColor: colours.orange200,
+            paddingVertical: 10
         },
         title: { fontSize: typography.fs4, color: colours.darkText },
         phone: {
@@ -95,13 +106,13 @@ const commonPatterns = {
             width: 100,
             height: typography.lh5,
             backgroundColor: colours.orange500,
-            marginBottom: typography.lh8
+            // marginBottom: typography.lh8
         },
         textInput: {
             height: 40,
-            borderColor: 'gray',
-            borderWidth: 1,
-            width: 100
+            borderColor: colours.orange900,
+            borderWidth: 2,
+            width: 200
         }
     })
 }
