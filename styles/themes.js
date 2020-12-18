@@ -81,7 +81,10 @@ const commonPatterns = {
         },
         detailImage: {
             width: 250,
-            height: 250
+            height: 250,
+            borderRadius: 15,
+            borderWidth: 2,
+            borderColor: colours.orange900
         },
         bodyText: {
             ...typography.bodyText
@@ -91,9 +94,6 @@ const commonPatterns = {
         },
         byLine: {
             ...typography.byLine
-        },
-        button: {
-            width: 100
         },
         center: {
             justifyContent: 'center',
@@ -106,6 +106,7 @@ const commonPatterns = {
             width: 100,
             height: typography.lh5,
             backgroundColor: colours.orange500,
+            borderRadius: 5
             // marginBottom: typography.lh8
         },
         textInput: {
@@ -113,6 +114,16 @@ const commonPatterns = {
             borderColor: colours.orange900,
             borderWidth: 2,
             width: 200
+        },
+        // taken from https://ethercreative.github.io/react-native-shadow-generator/
+        materialDesignShadow: {
+            shadowColor: colours.orange900,
+            shadowOffset: {
+                width: 0,
+                height: 1,
+            },
+            shadowOpacity: 0.99,
+            shadowRadius: 2.22,
         }
     })
 }

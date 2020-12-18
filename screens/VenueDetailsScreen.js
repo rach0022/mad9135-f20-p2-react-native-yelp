@@ -42,7 +42,7 @@ export default function VenueDetailsScreen({ navigation, route }) {
 
     // map the hours to a table element to display them properly
     return (
-        <SafeAreaView edges={theme.safeAreaEdges} style={{ ...theme.styles.center, ...theme.styles.container }}>
+        <SafeAreaView edges={theme.safeAreaEdges} style={{ ...theme.styles.center, ...theme.styles.container, flex: 1 }}>
             {isLoading
                 ? <Loader />
                 : (<>
@@ -53,14 +53,14 @@ export default function VenueDetailsScreen({ navigation, route }) {
                             uri: venue.image_url,
                             cache: 'only-if-cached'
                         }}
-                        style={theme.styles.detailImage}
+                        style={{ ...theme.styles.detailImage, ...theme.styles.materialDesignShadow }}
                     />
                     {/* <Text>Details of the Selected Food Venue( id: {`${id}`})</Text> */}
                     <Text style={theme.styles.headerText}>{venue.name || ""}</Text>
+                    <Text style={theme.styles.headerText}>{venue.price || "unknown price"}</Text>
                     <Text style={theme.styles.bodyText}>{venue.phone || "phone number unavaliable"}</Text>
                     <Text style={theme.styles.bodyText}>{venue.distance || "unknown distance"}</Text>
-                    <Text style={theme.styles.bodyText}>{venue.price || "unknown price"}</Text>
-                    <Text style={theme.styles.bodyText}>{venue.rating || "unknown rating"}</Text>
+                    <Text style={theme.styles.bodyText}>Rating: {venue.rating || "unknown rating"}</Text>
                     <View style={theme.styles.button}>
                         <Button color={theme.strongTextColor} title="Back" onPress={navigation.goBack} />
                     </View>

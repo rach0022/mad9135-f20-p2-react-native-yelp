@@ -5,29 +5,30 @@
 ### TO DO:
 
 - [x] add a refresh button
+- [ ] do something with the settings menu
 - [ ] map venue hours to some table element to display them to user
 - [x] add a search bar to filter the results of the venue list
 - [ ] create a no image supplied image?
 - [ ] create an icon for the app, maybe call it Food Finder?
 - [x] use expo location module to get users location
-- [ ] when the user clicks on the flat list display the venue selected in the FoodVenueDetailsScreen
+- [x] when the user clicks on the flat list display the venue selected in the FoodVenueDetailsScreen
 - [x] show restaurant distance in the flat list
 - [x] order list by increasing distance
-- [ ] update location.service.js to reverse geocode and get the users city/ suburb location to be displayed in the app
+- [x] update location.service.js to reverse geocode and get the users city/ suburb location to be displayed in the app
 - [x] create a component to show in an empty list | using the property emptyListCOmponent found in the react native docs I can set a component to display an empty container
 - [x] add a header component to the venue list using the listheaderComponent prop
 - [x] convert the venue list screeens into reusable components | Solution using the initialParams prop I am able to pass props dopwn to scren components for usage
-- [ ] style header and footer for venue list
-- [ ] add details of venue to Venue Details
+- [x] style header and footer for venue list
+- [x] add details of venue to Venue Details
 
 ## Bugs:
 
-- [ ] when the user searches it will delete all the data even though I use a separate container for the data now or it does not have any results
+- [x] when the user searches it will delete all the data even though I use a separate container for the data now or it does not have any results | was mutatting the original fetch call made a new useState variable to hold the displayed venues
 - [x] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues | solution forgot to default export and also did improt \* (all) as getVenues isntead of just import getVenues
 - [x] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason? | SOLUTION: Forgot to set styles on the FlatList to display itself like flex: 1
 - [x] using an async function in the use Effect awill cause an error | SOLUTION: wrote an external helper function that can have a .then chained onto
 - [x] destroy is not a function() when using the useEffect to get the location | SOLUTION: guard to see if the .lat and .lon properties exist on the location and if the .coord exist in the city
-- [ ] loader will not show when spinning
+- [x] loader will not show when spinning
 
 ## Background
 

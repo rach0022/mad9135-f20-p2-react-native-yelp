@@ -44,7 +44,7 @@ export default function VenueScreen({ navigation, route }) {
     // inside the touchable opacity we can fire a callback function to load the users location
     // and then display the nearby venues and location data from the reverse geocode result in the VenueList
     return (
-        <SafeAreaView style={{ ...theme.styles.center, ...theme.styles.container }}>
+        <SafeAreaView style={{ ...theme.styles.center, ...theme.styles.container, flex: 1 }}>
             <Text style={theme.styles.headerText}>Nearby{label}venue locations</Text>
             <Text style={theme.styles.byLine}>{route.params.byline}</Text>
             <TouchableOpacity onPress={handleLoadCity} style={theme.styles.button}>

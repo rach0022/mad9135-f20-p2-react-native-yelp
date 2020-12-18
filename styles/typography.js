@@ -53,7 +53,7 @@ export const byLine = {
     fontSize: fs5,
     fontWeight: fwMedium,
     lineHeight: lh5,
-    paddingBottom: lh9,
+    paddingBottom: lh2,
     textAlign: 'center'
 
 }
