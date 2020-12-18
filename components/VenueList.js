@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FlatList } from 'react-native'
 // import * as Location from 'expo-location'
-import { getVenues, getGeolocation, getDeviceLocation } from '../helpers'
+import { getVenues, getGeolocation } from '../helpers'
 import { themes } from '../styles'
 import VenueListItem from './VenueListItem'
 import EmptyListItem from './EmptyListItem' // used for the empty state of the flat list
@@ -10,14 +10,8 @@ import VenueListFooter from './VenueListFooter'
 import Loader from './Loader'
 
 // based on react native docs: https://reactnative.dev/docs/network
-export default function VenueList({ category, navigation }) {
-    // first lets get our search term based on what the user searched
-    // for now will be static but change later
-    const [city, setCity] = useState(null)
-
-    // now lets set a container for the buisnesses to display in the flatlist
-    // alos using react native lets grab its loading indicator and set up a variable to control it
-    const [isLoading, setLoading] = useState(true)
+export default function VenueList({ category, navigation, city, isLoading, setLoading }) {
+    // create a container to hold the data of the buisnessnes returned from the search 
     const [data, setData] = useState([]);
 
     // lets set up a useState function to hold our coordinates from the user, if the user denies position
@@ -27,11 +21,11 @@ export default function VenueList({ category, navigation }) {
     // get a reference to the current them, change later to update
     const theme = themes.light
 
-    useEffect(() => {
-        getDeviceLocation()
-            .then(setCity)
-            .catch((error) => console.error(error))
-    }, [setCity, getDeviceLocation])
+    // useEffect(() => {
+    //     getDeviceLocation()
+    //         .then(setCity)
+    //         .catch((error) => console.error(error))
+    // }, [setCity, getDeviceLocation])
 
     // now using a useEffect hook we can asynchrnously call the location service 
     // and get our coordinates based on our city. need city and setLocation as depandancies
@@ -74,6 +68,10 @@ export default function VenueList({ category, navigation }) {
 
     // using a ternary operator based on the state of is loading we either show the activity indicator 
     // or the flatlist with the data of the food venues
+    if (!data?.businesses && !isLoading) {
+        return null
+    }
+
     return (
         <>
             {isLoading
@@ -89,9 +87,6 @@ export default function VenueList({ category, navigation }) {
                                 data: data.businesses,
                                 category,
                                 byline: "Click on any nearby location to see more",
-                                setter: setCity,
-                                locator: getDeviceLocation,
-                                loader: setLoading,
                                 theme: theme,
                                 location: location,
                             })

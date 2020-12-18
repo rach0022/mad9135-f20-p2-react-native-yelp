@@ -90,7 +90,13 @@ const commonPatterns = {
         },
         footer: {
             marginBottom: 15
-        }
+        },
+        button: {
+            width: 100,
+            height: typography.lh5,
+            backgroundColor: colours.orange500,
+            marginBottom: typography.lh8
+        },
     })
 }
 
