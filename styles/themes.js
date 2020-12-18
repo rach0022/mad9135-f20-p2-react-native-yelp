@@ -97,6 +97,12 @@ const commonPatterns = {
             backgroundColor: colours.orange500,
             marginBottom: typography.lh8
         },
+        textInput: {
+            height: 40,
+            borderColor: 'gray',
+            borderWidth: 1,
+            width: 100
+        }
     })
 }
 

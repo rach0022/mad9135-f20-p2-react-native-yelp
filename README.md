@@ -6,7 +6,7 @@
 
 - [x] add a refresh button
 - [ ] map venue hours to some table element to display them to user
-- [ ] add a search bar to filter the results of the venue list
+- [x] add a search bar to filter the results of the venue list
 - [ ] create a no image supplied image?
 - [ ] create an icon for the app, maybe call it Food Finder?
 - [x] use expo location module to get users location
@@ -22,6 +22,7 @@
 
 ## Bugs:
 
+- [ ] when the user searches it will delete all the data even though I use a separate container for the data now or it does not have any results
 - [x] need to look at how helpers is exported, have to use function as getGeolocation.getGeolocation or getVenues.getVenues | solution forgot to default export and also did improt \* (all) as getVenues isntead of just import getVenues
 - [x] data is being fetched from the yelp api but it is not being displayed in the flat list for some reason? | SOLUTION: Forgot to set styles on the FlatList to display itself like flex: 1
 - [x] using an async function in the use Effect awill cause an error | SOLUTION: wrote an external helper function that can have a .then chained onto

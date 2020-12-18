@@ -13,6 +13,10 @@ import Loader from './Loader'
 export default function VenueList({ category, navigation, city, isLoading, setLoading }) {
     // create a container to hold the data of the buisnessnes returned from the search 
     const [data, setData] = useState([]);
+    const [venues, setVenues] = useState([])
+
+    // variable to hold the search
+    const [search, setSearch] = useState('')
 
     // lets set up a useState function to hold our coordinates from the user, if the user denies position
     // for now just use a default location of kanata, maybe close the app if they dont let you 
@@ -20,6 +24,13 @@ export default function VenueList({ category, navigation, city, isLoading, setLo
 
     // get a reference to the current them, change later to update
     const theme = themes.light
+
+    // a use effect hook that will set the venues everytime the data is pulled
+    useEffect(() => {
+        if (data?.businesses) {
+            setVenues(data.businesses.sort(sortBuisnessesByDistance)) // if we have buisnesses lets set the venues
+        }
+    }, [data, setVenues])
 
     // useEffect(() => {
     //     getDeviceLocation()
@@ -52,6 +63,36 @@ export default function VenueList({ category, navigation, city, isLoading, setLo
         // console.log("location", location)
     }, [location, setData])
 
+    // userEffect hook to filter the results based on the supplied term
+    useEffect(() => {
+        // every time the search is changed we willset the data to the filtered array
+        // where we check every category contained, if the category includes the search term then
+        // we return true and it will not be filtered otherwise if the loop ends return false
+        if (data?.businesses) {
+            setVenues(
+                // using the some method I can check if any of the categories has a title that includes the search term
+                data.businesses.filter(buisness => buisness.categories.some(cat => cat.title.includes(search)))
+                //     {
+                //     // console.log("\n\n\n", buisness.categories.forEach(category => {
+                //     //     if (category.title.includes(search)) {
+                //     //         return true
+                //     //     }
+                //     //     return false
+                //     // }))
+                //     // return buisness.categories.forEach(category => {
+                //     //     console.log(category.title, search, category.title.includes(search))
+                //     //     if (category.title.includes(search)) {
+                //     //         return true
+                //     //     }
+                //     //     return false
+                //     // })
+                // })
+            )
+        }
+
+
+    }, [search, setData])
+
     //create a function to sort the data (the list of buisnesses) based on the distance from location (property)
     const sortBuisnessesByDistance = (a, b) => a.distance - b.distance
 
@@ -79,18 +120,21 @@ export default function VenueList({ category, navigation, city, isLoading, setLo
                 : (
                     <FlatList
                         style={theme.styles.container}
-                        data={data?.businesses.sort(sortBuisnessesByDistance) || { id: 1, title: 'No Results' }}
+                        data={venues || { id: 1, title: 'No Results' }}
                         keyExtractor={({ id }) => `${id}`}
                         ListEmptyComponent={EmptyListItem({ category })}
                         ListHeaderComponent={
                             VenueListHeader({
-                                data: data.businesses,
+                                data: venues,
                                 category,
                                 byline: "Click on any nearby location to see more",
                                 theme: theme,
                                 location: location,
+                                search: search,
+                                setSearch: setSearch
                             })
                         }
+                        stickyHeaderIndices={[0]}
                         ListFooterComponent={VenueListFooter({ theme })}
                         renderItem={({ item }, index) => {
                             // update to a differtnt component later like venue card
